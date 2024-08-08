@@ -9,6 +9,7 @@ export default function handleProfileSignup(firstName, lastName, fileName){
                 val.value = val.reason;
                 delete val.reason;
             }
-         }   
+         }
+         return values;   
     });
 }
