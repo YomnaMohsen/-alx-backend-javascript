@@ -6,7 +6,7 @@ export default function handleProfileSignup(firstName, lastName, fileName){
     .then((values) => {
          for (const val of values){
             if (val.status === "rejected"){
-                val.value = val.reason;
+                val.value = val.reason.toString();
                 delete val.reason;
             }
          }
