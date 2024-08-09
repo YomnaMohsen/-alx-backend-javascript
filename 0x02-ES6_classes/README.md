@@ -1,0 +1,1 @@
+These tasks about using classes in ES6
