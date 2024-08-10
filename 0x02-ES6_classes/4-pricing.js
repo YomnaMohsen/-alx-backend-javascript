@@ -40,6 +40,3 @@ export default class Pricing{
     }
 
 }
-const p = new Pricing(100, new Currency("EUR", "Euro"))
-console.log(p);
-console.log(p.displayFullPrice());
