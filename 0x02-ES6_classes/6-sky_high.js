@@ -1,0 +1,14 @@
+import Building from './5-building';
+export default class SkyHighBuilding extends Building{
+    constructor(sqft,floors){
+        super();
+        this._floors = floors;
+    }
+    get floors(){
+        return this._floors;
+    }
+
+}
+
+
+
