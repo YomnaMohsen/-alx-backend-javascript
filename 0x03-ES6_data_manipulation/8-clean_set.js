@@ -1,14 +1,19 @@
 export default function cleanSet(myset, startstring) {
   let str = '';
+  if (startstring === '') {
+    return '';
+  }
   for (const item of myset) {
-    if (item.startsWith(startstring)) {
-      if (str !== '') {
-        str += '-';
+    if (typeof startstring === 'string') {
+      if (item.startsWith(startstring)) {
+        if (str !== '') {
+          str += '-';
+        }
+        const strslice = item.slice(startstring.length);
+        str += strslice;
       }
-      const strslice = item.slice(startstring.length);
-      str += strslice;
     }
   }
   return str;
 }
-console.log(cleanSet(new Set(['bonjovi', 'bonaparte', 'bonappetit', 'banana']), 'bon'));
+console.log(cleanSet(new Set(['bonjovi', 'bonaparte', 'bonappetit', 'banana']), ''));
