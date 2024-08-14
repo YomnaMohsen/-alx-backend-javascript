@@ -4,8 +4,8 @@ export default function cleanSet(myset, startstring) {
     return '';
   }
   for (const item of myset) {
-    if (typeof startstring === 'string') {
-      if (item.startsWith(startstring)) {
+    if (myset instanceof Set && typeof startstring === 'string') {
+      if (item && item.startsWith(startstring)) {
         if (str !== '') {
           str += '-';
         }
