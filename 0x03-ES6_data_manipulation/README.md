@@ -1,1 +1,1 @@
-This folder contains tasks about javascript data structures
+This folder contains tasks about javascript different data structures.
