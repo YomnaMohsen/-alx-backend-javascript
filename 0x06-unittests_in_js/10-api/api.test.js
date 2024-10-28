@@ -1,8 +1,9 @@
 const assert = require('assert');
+const { json } = require('express');
 const request = require('request');
 
 
-describe('integration test', function(){
+describe('Home test', function(){
  
     it ('200 status code', function(done) {
         request('http://localhost:7865', function(error, response, body){
@@ -25,6 +26,7 @@ describe('integration test', function(){
             done();
 
          });
+});    
 
       it ('id is number', function(done) {
         request('http://localhost:7865/15', function(error, response, body){
@@ -48,5 +50,35 @@ describe('integration test', function(){
          });
        
     });  
-});
+
 }); 
+
+describe('avail pay', function(){
+ 
+    it ('200 status code', function(done) {
+        request('http://localhost:7865/available_payments', function(error, response, body){
+            assert.equal(response.statusCode, 200);
+            done();
+         });
+     }); 
+
+     it ('return object', function(done) {
+        request('http://localhost:7865/available_payments', function(error, response, body){
+            assert.deepEqual(JSON.parse(body), { payment_methods: { 
+                credit_cards: true, paypal: false }
+            });
+            done();
+         });
+     }); 
+    });
+
+    describe('login', function(){
+ 
+    it ('200 status code', function(done) {
+        request.post('http://localhost:7865/login', { "userName": "Betty" }, function(error, response, body){
+            assert.equal(response.statusCode, 200);
+            assert.equal(body,'Welcome Betty');
+            done();
+         });
+     }); 
+    });
