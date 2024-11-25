@@ -26,7 +26,7 @@ function countStudents(path) {
   console.log(`Number of students: ${count}`);
   // eslint-disable-next-line guard-for-in
   for (const key in arr) {
-    console.log(`Number of students in ${key}: ${arr[key].length}. List: ${arr[key].join(', ')} `);
+    console.log(`Number of students in ${key}: ${arr[key].length}. List: ${arr[key].join(', ')}`);
   }
 }
 module.exports = countStudents;
