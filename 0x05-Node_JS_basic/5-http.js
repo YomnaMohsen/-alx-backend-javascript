@@ -26,7 +26,8 @@ function countStudents(path) {
           arr[record[fieldind]] = [record[nameind]];
         }
       }
-      let stdstr = `Number of students: ${count}\n`;
+      let stdstr = 'This is the list of our students\n';
+      stdstr = `Number of students: ${count}\n`;
       // eslint-disable-next-line guard-for-in
       for (const key in arr) {
         stdstr += `Number of students in ${key}: ${arr[key].length}. List: ${arr[key].join(', ')}\n`;
@@ -39,16 +40,14 @@ function countStudents(path) {
 }
 // eslint-disable-next-line consistent-return
 const app = http.createServer((req, res) => {
-  const pathname = req.url;
-  if (pathname === '/') {
+  if (req.url === '/') {
     res.setHeader('Content-Type', 'text/plain');
     res.end('Hello Holberton School!');
-  } else if (pathname === '/students') {
+  } else if (req.url === '/students') {
     countStudents(process.argv[2])
       .then((data) => {
         res.setHeader('Content-Type', 'text/plain');
-        escape.write('This is the list of our students\n');
-        res.write(data);
+        res.end(data);
       })
       .catch((error) => {
         res.setHeader('Content-Type', 'text/plain');
