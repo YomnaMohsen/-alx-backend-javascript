@@ -37,6 +37,7 @@ function countStudents(path) {
     throw new Error('Cannot load the database');
   });
 }
+// eslint-disable-next-line consistent-return
 const app = http.createServer((req, res) => {
   const pathname = req.url;
   if (pathname === '/') {

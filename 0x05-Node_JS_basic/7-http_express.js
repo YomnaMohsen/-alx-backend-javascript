@@ -11,7 +11,7 @@ app.get('/students', (req, res) => {
   res.write('This is the list of our students\n');
   countStudents(process.argv[2])
     .then((data) => { res.end(data); })
-    .catch((error) => { console.log(error); });
+    .catch((error) => { res.end(error); });
 });
 
 app.listen(1245);
