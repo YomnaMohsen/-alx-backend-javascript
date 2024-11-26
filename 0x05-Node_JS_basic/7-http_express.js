@@ -6,34 +6,40 @@ const app = express();
 function countStudents(path) {
   return new Promise((resolve, reject) => {
     // eslint-disable-next-line consistent-return
-    fs.readFile(path, 'utf-8', (err, data) => {
-      if (err) {
-        reject(err);
+    fs.readFile(path, (error, dataBuffer) => {
+      if (error) {
+        return reject();
       }
-      const datarows = data.split('\n');
-      const arr = {};
+      const data = dataBuffer.toString().split('\n');
       let count = 0;
-      const nameind = datarows[0].split(',').indexOf('firstname');
-      const fieldind = datarows[0].split(',').indexOf('field');
-      for (let i = 1; i < datarows.length; i += 1) {
-        // eslint-disable-next-line no-continue
-        if (datarows[i] === '') continue;
-        const record = datarows[i].split(',');
-        count += 1;
+      const fields = {};
 
-        if (arr[record[fieldind]]) {
-          arr[record[fieldind]].push(record[nameind]);
+      const firstnameIndex = data[0].split(',').indexOf('firstname');
+      const fieldIndex = data[0].split(',').indexOf('field');
+      // eslint-disable-next-line no-plusplus
+      for (let i = 1; i < data.length; i++) {
+        // eslint-disable-next-line no-continue
+        if (data[i] === '') continue;
+        // eslint-disable-next-line no-plusplus
+        count++;
+        const row = data[i].split(',');
+        if (fields[row[fieldIndex]]) {
+          fields[row[fieldIndex]].push(row[firstnameIndex]);
         } else {
-          arr[record[fieldind]] = [record[nameind]];
+          fields[row[fieldIndex]] = [row[firstnameIndex]];
         }
       }
-      let stdstr = `Number of students: ${count}\n`;
+      let studentsData = 'This is the list of our students\n';
+      studentsData += `Number of students: ${count}\n`;
+
       // eslint-disable-next-line guard-for-in
-      for (const key in arr) {
-        stdstr += `Number of students in ${key}: ${arr[key].length}. List: ${arr[key].join(', ')}\n`;
+      for (const field in fields) {
+        studentsData += `Number of students in ${field}: ${fields[field].length}. List: ${fields[field].join(', ')}\n`;
       }
-      resolve(stdstr.slice(0, -1));
+      resolve(studentsData.slice(0, -1));
     });
+  }).catch(() => {
+    throw new Error('Cannot load the database');
   });
 }
 
