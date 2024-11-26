@@ -41,8 +41,8 @@ const app = http.createServer((req, res) => {
   const pathname = req.url;
   if (pathname === '/') {
     res.setHeader('Content-Type', 'text/plain');
-    res.end('Hello Holberton School!');
-  } else if (pathname === '/students') {
+    return res.end('Hello Holberton School!');
+  } if (pathname === '/students') {
     countStudents(process.argv[2])
       .then((data) => {
         res.setHeader('Content-Type', 'text/plain');
