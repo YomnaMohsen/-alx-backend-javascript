@@ -8,7 +8,6 @@ function countStudents(path) {
       const datarows = data.split('\n');
       const arr = {};
       let count = 0;
-      // let stdstr = '';
       const nameind = datarows[0].split(',').indexOf('firstname');
       const fieldind = datarows[0].split(',').indexOf('field');
       for (let i = 1; i < datarows.length; i += 1) {
@@ -23,12 +22,10 @@ function countStudents(path) {
           arr[record[fieldind]] = [record[nameind]];
         }
       }
-      //  stdstr += `Number of students: ${count}\n`;
       console.log(`Number of students: ${count}`);
       // eslint-disable-next-line guard-for-in
       for (const key in arr) {
       // eslint-disable-next-line max-len
-      //  stdstr += `Number of students in ${key}: ${arr[key].length}. List: ${arr[key].join(', ')} \n`;
         console.log(`Number of students in ${key}: ${arr[key].length}. List: ${arr[key].join(', ')}`);
       }
       resolve();

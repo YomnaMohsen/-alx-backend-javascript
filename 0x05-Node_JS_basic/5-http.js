@@ -5,7 +5,9 @@ function countStudents(path) {
   return new Promise((resolve, reject) => {
     // eslint-disable-next-line consistent-return
     fs.readFile(path, 'utf-8', (err, data) => {
-      if (err) return reject();
+      if (err) {
+        return reject();
+      }
       const datarows = data.split('\n');
       const arr = {};
       let count = 0;
@@ -52,5 +54,5 @@ const app = http.createServer((req, res) => {
       });
   }
 });
-app.listen(1245, '127.0.0.1', () => { console.log('listening'); });
+app.listen(1245);
 module.exports = app;
