@@ -8,7 +8,7 @@ function countStudents(path) {
       const datarows = data.split('\n');
       const arr = {};
       let count = 0;
-      let stdstr = '';
+      // let stdstr = '';
       const nameind = datarows[0].split(',').indexOf('firstname');
       const fieldind = datarows[0].split(',').indexOf('field');
       for (let i = 1; i < datarows.length; i += 1) {
@@ -23,14 +23,14 @@ function countStudents(path) {
           arr[record[fieldind]] = [record[nameind]];
         }
       }
-      stdstr += `Number of students: ${count}\n`;
+      //  stdstr += `Number of students: ${count}\n`;
       console.log(`Number of students: ${count}`);
       // eslint-disable-next-line guard-for-in
       for (const key in arr) {
-        stdstr += `Number of students in ${key}: ${arr[key].length}. List: ${arr[key].join(', ')} \n`;
+      //  stdstr += `Number of students in ${key}: ${arr[key].length}. List: ${arr[key].join(', ')} \n`;
         console.log(`Number of students in ${key}: ${arr[key].length}. List: ${arr[key].join(', ')} `);
       }
-      resolve(stdstr);
+      resolve();
     });
   }).catch(() => {
     throw new Error('Cannot load the database');
