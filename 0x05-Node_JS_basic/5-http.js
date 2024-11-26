@@ -1,6 +1,5 @@
 const http = require('http');
 const fs = require('fs');
-const { escape } = require('querystring');
 
 function countStudents(path) {
   return new Promise((resolve, reject) => {
