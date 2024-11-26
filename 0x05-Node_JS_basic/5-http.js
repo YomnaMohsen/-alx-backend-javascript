@@ -4,7 +4,7 @@ const fs = require('fs');
 function countStudents(path) {
   return new Promise((resolve, reject) => {
     // eslint-disable-next-line consistent-return
-    fs.readFile(path, (err, data) => {
+    fs.readFile(path, 'utf-8', (err, data) => {
       if (err) {
         return reject();
       }
@@ -53,6 +53,6 @@ const app = http.createServer((req, res) => {
         res.end(`This is the list of our students\n'${error.message}`);
       });
   }
-});
-app.listen(1245);
+})
+  .listen(1245);
 module.exports = app;
