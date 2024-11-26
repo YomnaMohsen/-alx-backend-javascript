@@ -50,7 +50,7 @@ const app = http.createServer((req, res) => {
       })
       .catch((error) => {
         res.setHeader('Content-Type', 'text/plain');
-        res.write(`This is the list of our students\n'${error.message}`);
+        res.end(`This is the list of our students\n'${error.message}`);
       });
   }
 });
