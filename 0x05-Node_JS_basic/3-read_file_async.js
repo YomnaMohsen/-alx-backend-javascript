@@ -4,7 +4,7 @@ function countStudents(path) {
   return new Promise((resolve, reject) => {
     // eslint-disable-next-line consistent-return
     fs.readFile(path, 'utf-8', (err, data) => {
-      if (err) return reject();
+      if (err) { return reject(); }
       const datarows = data.split('\n');
       const arr = {};
       let count = 0;
@@ -27,8 +27,9 @@ function countStudents(path) {
       console.log(`Number of students: ${count}`);
       // eslint-disable-next-line guard-for-in
       for (const key in arr) {
+      // eslint-disable-next-line max-len
       //  stdstr += `Number of students in ${key}: ${arr[key].length}. List: ${arr[key].join(', ')} \n`;
-        console.log(`Number of students in ${key}: ${arr[key].length}. List: ${arr[key].join(', ')} `);
+        console.log(`Number of students in ${key}: ${arr[key].length}. List: ${arr[key].join(', ')}`);
       }
       resolve();
     });
