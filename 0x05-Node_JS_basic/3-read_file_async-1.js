@@ -29,7 +29,7 @@ function countStudents(path) {
       for (const key in arr) {
         stdstr += `Number of students in ${key}: ${arr[key].length}. List: ${arr[key].join(', ')}\n`;
       }
-      resolve(stdstr);
+      resolve(stdstr.slice(0, -1));
     });
   }).catch(() => {
     throw new Error('Cannot load the database');
