@@ -24,10 +24,10 @@ function countStudents(path) {
         }
       }
       stdstr += `Number of students: ${count}\n`;
-      console.log(`Number of students: ${count}`);
+      // console.log(`Number of students: ${count}`);
       // eslint-disable-next-line guard-for-in
       for (const key in arr) {
-        stdstr += `Number of students in ${key}: ${arr[key].length}. List: ${arr[key].join(', ')} \n`;
+        stdstr += `Number of students in ${key}: ${arr[key].length}. List: ${arr[key].join(', ')}\n`;
       }
       resolve(stdstr);
     });
