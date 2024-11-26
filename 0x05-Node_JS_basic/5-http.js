@@ -1,5 +1,6 @@
 const http = require('http');
 const fs = require('fs');
+const { escape } = require('querystring');
 
 function countStudents(path) {
   return new Promise((resolve, reject) => {
@@ -25,8 +26,7 @@ function countStudents(path) {
           arr[record[fieldind]] = [record[nameind]];
         }
       }
-      let stdstr = 'This is the list of our students\n';
-      stdstr += `Number of students: ${count}\n`;
+      let stdstr = `Number of students: ${count}\n`;
       // eslint-disable-next-line guard-for-in
       for (const key in arr) {
         stdstr += `Number of students in ${key}: ${arr[key].length}. List: ${arr[key].join(', ')}\n`;
@@ -42,17 +42,25 @@ const app = http.createServer((req, res) => {
   const pathname = req.url;
   if (pathname === '/') {
     res.setHeader('Content-Type', 'text/plain');
-    return res.end('Hello Holberton School!');
-  } if (pathname === '/students') {
+    res.end('Hello Holberton School!');
+  } else if (pathname === '/students') {
     countStudents(process.argv[2])
       .then((data) => {
         res.setHeader('Content-Type', 'text/plain');
-        res.end(data);
+        escape.write('This is the list of our students\n');
+        res.write(data);
+        res.end();
       })
       .catch((error) => {
+        res.statusCode = 404;
         res.setHeader('Content-Type', 'text/plain');
-        res.end(`This is the list of our students\n'${error.message}`);
+        res.write(`This is the list of our students\n'${error.message}`);
+        res.end();
       });
+  } else {
+    res.writeHead(404, { 'Content-Type': 'text/plain' });
+    res.write('Not found');
+    res.end();
   }
 });
 app.listen(1245);
