@@ -6,10 +6,14 @@ const app = http.createServer((req, res) => {
   if (pathname === '/') {
     res.end('Hello Holberton School!');
   } else if (pathname === '/students') {
-    res.write('This is the list of our students\n');
     countStudents(process.argv[2])
-      .then((data) => { res.end(data); })
-      .catch((error) => { console.log(error); });
+      .then((data) => {
+      // res.setHeader('Content-Type', 'text/plain');
+        res.end(data);
+      })
+      .catch((error) => {
+        res.end(`This is the list of our students\n'${error.message}`);
+      });
   }
 });
 app.listen(1245, '127.0.0.1', () => { console.log('listening'); });
