@@ -13,7 +13,7 @@ function countStudents(path) {
       const fieldind = datarows[0].split(',').indexOf('field');
       for (let i = 1; i < datarows.length; i += 1) {
         // eslint-disable-next-line no-continue
-        if (!datarows[i] === '') continue;
+        if (datarows[i] === '') continue;
         const record = datarows[i].split(',');
         count += 1;
 
