@@ -38,14 +38,16 @@ function countStudents(path) {
 const app = http.createServer((req, res) => {
   const pathname = req.url;
   if (pathname === '/') {
+    res.setHeader('Content-Type', 'text/plain');
     res.end('Hello Holberton School!');
   } else if (pathname === '/students') {
     countStudents(process.argv[2])
       .then((data) => {
-      // res.setHeader('Content-Type', 'text/plain');
+        res.setHeader('Content-Type', 'text/plain');
         res.end(data);
       })
       .catch((error) => {
+        res.setHeader('Content-Type', 'text/plain');
         res.end(`This is the list of our students\n'${error.message}`);
       });
   }
