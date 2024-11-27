@@ -14,7 +14,7 @@ app.get('/cart/:id', (req, res) => {
         res.sendStatus(404);
     }
     else{
-        res.send(`Payment methods for cart :${req.params.id}`);
+        res.send(`Payment methods for cart ${req.params.id}`);
     }
     
 });
