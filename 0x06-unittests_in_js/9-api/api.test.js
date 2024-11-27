@@ -35,9 +35,9 @@ describe('cart', () => {
     });
   });
 
-  it('should return Payment methods for cart 12', (done) => {
-    request('http://localhost:7865/cart/12', (err, res, body) => {
-      assert.equal(body, 'Payment methods for cart 12');
+  it('should return Payment methods for cart 15', (done) => {
+    request('http://localhost:7865/cart/15', (err, res, body) => {
+      assert.equal(body, 'Payment methods for cart 15');
       done();
     });
   });
