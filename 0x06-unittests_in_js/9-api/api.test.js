@@ -35,7 +35,7 @@ describe('integration test', function(){
      
      it ('id check', function(done) {
         request('http://localhost:7865/15', function(error, response, body){
-            assert.equal(body, 'Payment methods for cart :15');
+            assert.equal(body, 'Payment methods for cart 15');
             done();
          });
     });
