@@ -9,8 +9,8 @@ describe('Testing numbers', () => {
     expect(2 === 2).to.be.true;
   });
 
-  it.skip('2 is equal to 4', () =>{
-    expect(2 == 4).to.be.true;
+  it('1 is equal to 3', () => {
+    expect(1 === 3).to.be.true;
   });
 
   it('3 is equal to 3', () => {
