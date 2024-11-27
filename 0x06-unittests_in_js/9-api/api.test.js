@@ -29,7 +29,7 @@ describe('integration test', function(){
 });
 }); 
 
-describe('integration test', function(){
+describe('cart', function(){
 
     it ('id is number', function(done) {
         request('http://localhost:7865/15', function(error, response, body){
