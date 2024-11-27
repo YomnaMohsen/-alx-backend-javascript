@@ -27,6 +27,27 @@ describe('integration test', function(){
          });         
 });
 }); 
+describe('cart', () => {
+  it('should return 200', (done) => {
+    request('http://localhost:7865/cart/12', (err, res, body) => {
+      assert.equal(res.statusCode, 200);
+      done();
+    });
+  });
 
+  it('should return Payment methods for cart 12', (done) => {
+    request('http://localhost:7865/cart/12', (err, res, body) => {
+      assert.equal(body, 'Payment methods for cart 12');
+      done();
+    });
+  });
+
+  it('should return 404', (done) => {
+    request('http://localhost:7865/cart/hello', (err, res, body) => {
+      assert.equal(res.statusCode, 404);
+      done();
+    });
+  });
+});
 
 
