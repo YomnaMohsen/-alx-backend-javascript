@@ -24,8 +24,7 @@ describe('integration test', function(){
             assert.equal(response.statusCode, 404);
             done();
 
-         });
-         
+         });         
 });
 }); 
 
@@ -49,9 +48,8 @@ describe('cart', function(){
         request('http://localhost:7865/well', function(error, response, body){
             assert.equal(response.statusCode, 404);
             done();
-
-         });
-       
+         });       
     });  
-
 });
+
+
