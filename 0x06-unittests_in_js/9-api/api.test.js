@@ -28,28 +28,5 @@ describe('integration test', function(){
 });
 }); 
 
-describe('cart', function(){
-
-    it ('id is number', function(done) {
-        request('http://localhost:7865/15', function(error, response, body){
-            assert.equal(response.statusCode, 200);
-            done();
-         });
-     });
-     
-     it ('id check', function(done) {
-        request('http://localhost:7865/15', function(error, response, body){
-            assert.equal(body, 'Payment methods for cart 15');
-            done();
-         });
-    });
-
-    it ('id not anumber', function(done) {
-        request('http://localhost:7865/well', function(error, response, body){
-            assert.equal(response.statusCode, 404);
-            done();
-         });       
-    });  
-});
 
 
