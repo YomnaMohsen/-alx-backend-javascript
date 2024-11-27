@@ -4,5 +4,4 @@ function sendPaymentRequestToApi(totalAmount, totalShipping){
     console.log(`The total is: ${sum1}`);
 
 }
-
 module.exports = sendPaymentRequestToApi;
