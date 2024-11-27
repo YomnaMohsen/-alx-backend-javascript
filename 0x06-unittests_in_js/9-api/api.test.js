@@ -25,8 +25,13 @@ describe('integration test', function(){
             done();
 
          });
+         
+});
+}); 
 
-      it ('id is number', function(done) {
+describe('integration test', function(){
+
+    it ('id is number', function(done) {
         request('http://localhost:7865/15', function(error, response, body){
             assert.equal(response.statusCode, 200);
             done();
@@ -48,5 +53,5 @@ describe('integration test', function(){
          });
        
     });  
+
 });
-}); 
