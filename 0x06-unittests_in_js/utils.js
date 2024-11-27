@@ -9,7 +9,7 @@ const Utils = {
              res = Math.round(a) - Math.round(b);
              break;
             case 'DIVIDE':
-             res = b === 0 ? "Error": Math.round(a) / Math.round(b);
+             res = Math.round(b) === 0 ? "Error": Math.round(a) / Math.round(b);
           }
           return res;
     }
