@@ -29,26 +29,28 @@ describe('Home test', function(){
 }); 
 
 describe('cart', () => {
-  it('should return 200', (done) => {
-    request('http://localhost:7865/cart/12', (err, res, body) => {
-      assert.equal(res.statusCode, 200);
-      done();
-    });
-  });
 
-  it('should return Payment methods for cart 12', (done) => {
-    request('http://localhost:7865/cart/12', (err, res, body) => {
-      assert.equal(body, 'Payment methods for cart 12');
-      done();
+   it ('id is number', function(done) {
+        request('http://localhost:7865/cart/15', function(error, response, body){
+            assert.equal(response.statusCode, 200);
+            done();
+         });
+     });
+   it ('id check', function(done) {
+        request('http://localhost:7865/cart/15', function(error, response, body){
+            assert.equal(body, 'Payment methods for cart 15');
+            done();
+         });
     });
-  });
 
-  it('should return 404', (done) => {
-    request('http://localhost:7865/cart/hello', (err, res, body) => {
-      assert.equal(res.statusCode, 404);
-      done();
-    });
-  });
+  it ('id not anumber', function(done) {
+        request('http://localhost:7865/cart/well', function(error, response, body){
+            assert.equal(response.statusCode, 404);
+            done();
+
+         });
+
+    });  
 });
 describe('avail pay', function(){
  
